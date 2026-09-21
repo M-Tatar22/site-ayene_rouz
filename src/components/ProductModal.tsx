@@ -3,7 +3,7 @@ import { Product } from '../types';
 import {
   X,
   Phone,
-  MessageCircle,
+  Instagram,
   Bookmark,
   Check,
   ShieldCheck,
@@ -34,8 +34,8 @@ export const ProductModal: React.FC<ProductModalProps> = ({
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [copied, setCopied] = useState(false);
 
-  const whatsappMessage = `درود بر برادران تاتار (کابین روز)،\nدرخواست استعلام قیمت و سفارش مدل زیر را دارم:\n- نام محصول: ${product.name}\n- کد کالا: ${product.code}\n- برند: ${product.brand}\n- سایز/ابعاد: ${product.specs.dimensions || product.specs.unitSize}\nلطفاً قیمت روز و زمان تحویل را اعلام فرمایید.`;
-  const whatsappUrl = `https://wa.me/98${SHOWROOM_INFO.whatsapp.substring(1)}?text=${encodeURIComponent(whatsappMessage)}`;
+  const telegramUrl = `${SHOWROOM_INFO.telegram}`;
+  const instagramUrl = `${SHOWROOM_INFO.instagram}`;
 
   const handleCopySpecs = () => {
     const textToCopy = `کابین روز (تولیدی آینه و روشویی PVC تاتار)\nمدل: ${product.name}\nکد کالا: ${product.code}\nابعاد کابین: ${product.specs.dimensions || product.specs.unitSize || '-'}\nابعاد آینه: ${product.specs.mirrorDimensions || '-'}\nمتریال: ${product.specs.material}\nپوشش: ${product.specs.finish}\nکانال تلگرام: ${SHOWROOM_INFO.telegram}\nتلفن سفارشات: ${SHOWROOM_INFO.phone1}`;
@@ -279,20 +279,30 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
             <a
               href={`tel:${SHOWROOM_INFO.phone1}`}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium text-slate-200"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200"
             >
               <Phone className="w-4 h-4 text-emerald-400" />
-              <span>تماس تلفنی</span>
+              <span>تماس: {SHOWROOM_INFO.phone1}</span>
             </a>
 
             <a
-              href={whatsappUrl}
+              href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-lg shadow-emerald-900/30"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white text-xs font-bold shadow-md"
             >
-              <MessageCircle className="w-4 h-4" />
-              <span>استعلام قیمت در واتساپ تاتار</span>
+              <Instagram className="w-4 h-4" />
+              <span>دایرکت اینستاگرام</span>
+            </a>
+
+            <a
+              href={telegramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shadow-md shadow-sky-900/30"
+            >
+              <Send className="w-4 h-4" />
+              <span>استعلام در تلگرام</span>
             </a>
           </div>
         </div>

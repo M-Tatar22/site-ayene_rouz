@@ -2,7 +2,7 @@ import React from 'react';
 import { SHOWROOM_INFO } from '../data/products';
 import {
   Phone,
-  MessageCircle,
+  Instagram,
   MapPin,
   Clock,
   ShieldCheck,
@@ -39,22 +39,22 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-950/40 border border-slate-800">
-            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold shrink-0">
-              <Send className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-lg bg-pink-500/10 text-pink-400 flex items-center justify-center font-bold shrink-0">
+              <Instagram className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-bold text-white block">کانال تلگرام فعال</span>
-              <span className="text-slate-400 text-[11px]">مشاهده روزانه جدیدترین تولیدات در Ayene_rouz@</span>
+              <span className="font-bold text-white block">پیج اینستاگرام</span>
+              <span className="text-slate-400 text-[11px]">مشاهده نمونه‌کارهای روزانه در ayene_rouz@</span>
             </div>
           </div>
 
           <div className="flex items-center gap-3 p-3 rounded-xl bg-slate-950/40 border border-slate-800">
-            <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-bold shrink-0">
-              <MapPin className="w-5 h-5" />
+            <div className="w-10 h-10 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold shrink-0">
+              <Send className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-bold text-white block">ارسال به سراسر کشور</span>
-              <span className="text-slate-400 text-[11px]">بسته‌بندی پالت چوبی ضدضربه و مطمئن</span>
+              <span className="font-bold text-white block">کانال تلگرام فعال</span>
+              <span className="text-slate-400 text-[11px]">استعلام قیمت و مدل‌های جدید در Ayene_rouz@</span>
             </div>
           </div>
         </div>
@@ -68,11 +68,22 @@ export const Footer: React.FC = () => {
             <BrandLogo size="lg" variant="light" />
 
             <p className="text-xs text-slate-400 leading-relaxed max-w-md mt-2">
-              تولیدی <strong className="text-slate-200">کابین روز (تاتار)</strong> طراح و سازنده انواع روشویی کابینتی دیواری (وال‌هنگ)، روشویی پایه‌دار زمینی، آینه‌های هوشمند لمسی بک‌لایت و آینه باکس‌های لوکس ضدآب PVC.
-              این وب‌سایت به عنوان ویترین تخصصی برای انتخاب آسان مدل‌ها و استعلام مستقیم قیمت از کارگاه بدون نیاز به ثبت‌نام یا پرداخت آنلاین فعالیت می‌کند.
+              تولیدی <strong className="text-slate-200">کابین روز (تاتار)</strong> طراح و سازنده انواع روشویی کابینتی دیواری (وال‌هنگ)، کشودار شیاردار مدرن، آینه‌های شیک و آینه باکس‌های لوکس ۱۰۰٪ ضدآب PVC.
+              این وب‌سایت به عنوان ویترین تخصصی برای انتخاب آسان مدل‌ها و استعلام مستقیم قیمت از کارگاه فعالیت می‌کند.
             </p>
 
-            <div className="flex items-center gap-2 pt-2">
+            <div className="flex flex-wrap items-center gap-2 pt-2">
+              <a
+                href={SHOWROOM_INFO.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-pink-500/20 to-purple-500/20 hover:from-pink-500/30 hover:to-purple-500/30 text-pink-300 border border-pink-500/40 text-xs font-semibold transition-all hover:scale-102"
+              >
+                <Instagram className="w-4 h-4 text-pink-400" />
+                <span>اینستاگرام: {SHOWROOM_INFO.instagramId}</span>
+                <ExternalLink className="w-3 h-3 opacity-60" />
+              </a>
+
               <a
                 href={SHOWROOM_INFO.telegram}
                 target="_blank"
@@ -83,16 +94,6 @@ export const Footer: React.FC = () => {
                 <span>کانال تلگرام: {SHOWROOM_INFO.telegramId}</span>
                 <ExternalLink className="w-3 h-3 opacity-60" />
               </a>
-
-              <a
-                href={`https://wa.me/98${SHOWROOM_INFO.whatsapp.substring(1)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 text-xs font-semibold transition-colors"
-              >
-                <MessageCircle className="w-3.5 h-3.5" />
-                <span>واتساپ کارگاه</span>
-              </a>
             </div>
           </div>
 
@@ -102,32 +103,22 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-slate-400">
               <li>
                 <a href="#catalog-section" className="hover:text-amber-400 transition-colors">
-                  کابین روشویی وال‌هنگ (دیواری مدرن)
+                  روشویی‌های وال‌هنگ مدرن با ورق ۱۶ میل ضدآب
                 </a>
               </li>
               <li>
                 <a href="#catalog-section" className="hover:text-amber-400 transition-colors">
-                  آینه‌های هوشمند بک‌لایت تاچ و ضدبخار
+                  کابین‌های طرح چوب و شیاردار CNC
                 </a>
               </li>
               <li>
                 <a href="#catalog-section" className="hover:text-amber-400 transition-colors">
-                  روشویی صفحه سرامیک پرسلان اسلب
+                  فول‌ست مشکی مات با کاسه سرامیکی اختصاصی
                 </a>
               </li>
               <li>
                 <a href="#catalog-section" className="hover:text-amber-400 transition-colors">
-                  آینه باکس و شلف‌های ۱۰۰٪ ضدآب PVC
-                </a>
-              </li>
-              <li>
-                <a href="#catalog-section" className="hover:text-amber-400 transition-colors">
-                  کابین پایه‌دار و کمدی جادار
-                </a>
-              </li>
-              <li>
-                <a href="#catalog-section" className="hover:text-amber-400 transition-colors">
-                  فول‌ست‌های مستر لوکس سرویس بهداشتی
+                  آینه باکس‌های شلف‌دار و جا حوله‌ای استیل
                 </a>
               </li>
             </ul>
@@ -163,14 +154,26 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Copyright Bar */}
-        <div className="mt-12 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+        {/* Bottom Copyright & Developer Credit Bar */}
+        <div className="mt-12 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} تولیدی آینه و کابین روشویی PVC تاتار (کابین روز). کلیه حقوق محفوظ است.
           </p>
-          <p className="text-[11px]">
-            ویترین آنلاین محصولات کارگاه | بدون درگاه پرداخت | استعلام و سفارش مستقیم
-          </p>
+
+          {/* Developer Credit Link requested by user */}
+          <div className="flex items-center gap-2">
+            <span className="text-slate-400">طراحی و توسعه توسط:</span>
+            <a
+              href="https://matintatar.ir"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-amber-400 hover:text-amber-300 font-medium border border-slate-800 hover:border-amber-500/40 transition-all shadow-sm"
+              title="مشاهده وب‌سایت توسعه‌دهنده"
+            >
+              <span>M_Tatar22</span>
+              <ExternalLink className="w-3 h-3 opacity-70" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Send, Ruler, Sparkles, Check, Phone, MessageCircle } from 'lucide-react';
+import { X, Send, Ruler, Sparkles, Check, Phone, Instagram, Copy } from 'lucide-react';
 import { SHOWROOM_INFO } from '../data/products';
 
 interface CustomVanityOrderModalProps {
@@ -16,17 +16,18 @@ export const CustomVanityOrderModal: React.FC<CustomVanityOrderModalProps> = ({
   const [length, setLength] = useState('75');
   const [depth, setDepth] = useState('45');
   const [mountType, setMountType] = useState('وال‌هنگ (دیواری معلق)');
-  const [mirrorType, setMirrorType] = useState('آینه هوشمند بک‌لایت لمسی');
-  const [colorFinish, setColorFinish] = useState('طوسی زغالی مات');
-  const [basinType, setBasinType] = useState('کاسه سرامیک پرسلان روکار');
+  const [mirrorType, setMirrorType] = useState('آینه گرد مینیمال');
+  const [colorFinish, setColorFinish] = useState('طرح چوب بلوط شیاردار');
+  const [basinType, setBasinType] = useState('کاسه سرامیک بیضی روکار');
   const [customerName, setCustomerName] = useState('');
   const [customerPhone, setCustomerPhone] = useState('');
   const [extraNotes, setExtraNotes] = useState('');
+  const [copied, setCopied] = useState(false);
 
   const generateOrderMessage = () => {
     return (
       `درود بر برادران تاتار (کابین روز)،\n` +
-      `درخواست استعلام تولید سفارشی کابین روشویی با ابعاد اختصاصی دارم:\n\n` +
+      `درخواست استعلام قیمت و ساخت کابین روشویی سفارشی دارم:\n\n` +
       `📐 ابعاد درخواستی:\n` +
       `- طول (عرض): ${length} سانتی‌متر\n` +
       `- عمق: ${depth} سانتی‌متر\n` +
@@ -41,11 +42,17 @@ export const CustomVanityOrderModal: React.FC<CustomVanityOrderModalProps> = ({
     );
   };
 
-  const handleSendWhatsApp = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleCopy = () => {
     const msg = generateOrderMessage();
-    const url = `https://wa.me/98${SHOWROOM_INFO.whatsapp.substring(1)}?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+    navigator.clipboard.writeText(msg);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
+  };
+
+  const handleSendTelegram = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleCopy();
+    window.open(SHOWROOM_INFO.telegram, '_blank');
   };
 
   return (
@@ -74,7 +81,7 @@ export const CustomVanityOrderModal: React.FC<CustomVanityOrderModalProps> = ({
         </div>
 
         {/* Modal Body */}
-        <form onSubmit={handleSendWhatsApp} className="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs sm:text-sm">
+        <form onSubmit={handleSendTelegram} className="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs sm:text-sm">
           <div className="bg-amber-50 border border-amber-200/80 p-3.5 rounded-2xl text-xs text-amber-900 space-y-1">
             <div className="font-bold flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-amber-600" />
@@ -98,21 +105,24 @@ export const CustomVanityOrderModal: React.FC<CustomVanityOrderModalProps> = ({
                   max="200"
                   value={length}
                   onChange={(e) => setLength(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 font-bold focus:bg-white focus:border-amber-500 outline-none"
-                  placeholder="مثلاً ۷۵"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:bg-white focus:border-amber-500 outline-none font-bold"
                   required
                 />
-                <span className="text-xs text-slate-500 shrink-0 font-medium">سانتی‌متر</span>
+                <span className="text-slate-500 text-xs shrink-0 font-medium">cm</span>
               </div>
-              <div className="flex gap-1.5 mt-1.5 flex-wrap">
-                {['۵۰', '۶۰', '۷۵', '۸۰', '۹۰', '۱۰۰', '۱۲۰'].map((sz) => (
+              <div className="flex gap-1.5 mt-2 flex-wrap text-[11px]">
+                {['55', '65', '75', '85', '100'].map((preset) => (
                   <button
-                    key={sz}
                     type="button"
-                    onClick={() => setLength(sz)}
-                    className="text-[10px] bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded text-slate-700"
+                    key={preset}
+                    onClick={() => setLength(preset)}
+                    className={`px-2 py-0.5 rounded-md border ${
+                      length === preset
+                        ? 'bg-amber-500 text-white border-amber-500 font-bold'
+                        : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
+                    }`}
                   >
-                    {sz} cm
+                    {preset}
                   </button>
                 ))}
               </div>
@@ -120,105 +130,108 @@ export const CustomVanityOrderModal: React.FC<CustomVanityOrderModalProps> = ({
 
             <div>
               <label className="block font-semibold text-slate-800 mb-1.5 text-xs">
-                عمق کابین روشویی (فاصله از دیوار):
+                عمق کابین روشویی (سانتی‌متر):
               </label>
               <div className="flex items-center gap-2">
                 <input
                   type="number"
                   min="30"
-                  max="60"
+                  max="70"
                   value={depth}
                   onChange={(e) => setDepth(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 font-bold focus:bg-white focus:border-amber-500 outline-none"
-                  placeholder="مثلاً ۴۵"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:bg-white focus:border-amber-500 outline-none font-bold"
                   required
                 />
-                <span className="text-xs text-slate-500 shrink-0 font-medium">سانتی‌متر</span>
+                <span className="text-slate-500 text-xs shrink-0 font-medium">cm</span>
               </div>
-              <div className="flex gap-1.5 mt-1.5 flex-wrap">
-                {['۳۶ (کم‌جا)', '۴۲ (استاندارد)', '۴۸ (جادار)'].map((dp) => (
+              <div className="flex gap-1.5 mt-2 flex-wrap text-[11px]">
+                {['38', '42', '45', '48'].map((preset) => (
                   <button
-                    key={dp}
                     type="button"
-                    onClick={() => setDepth(dp.split(' ')[0])}
-                    className="text-[10px] bg-slate-100 hover:bg-slate-200 px-2 py-0.5 rounded text-slate-700"
+                    key={preset}
+                    onClick={() => setDepth(preset)}
+                    className={`px-2 py-0.5 rounded-md border ${
+                      depth === preset
+                        ? 'bg-amber-500 text-white border-amber-500 font-bold'
+                        : 'bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200'
+                    }`}
                   >
-                    {dp}
+                    {preset}
                   </button>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Mount and Mirror Type */}
+          {/* Mount and Mirror Selection */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block font-semibold text-slate-800 mb-1.5 text-xs">
-                نوع نصب:
+              <label className="block font-semibold text-slate-800 mb-1 text-xs">
+                نحوه نصب کابینت:
               </label>
               <select
                 value={mountType}
                 onChange={(e) => setMountType(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:bg-white focus:border-amber-500 outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:bg-white focus:border-amber-500 outline-none"
               >
                 <option value="وال‌هنگ (دیواری معلق)">وال‌هنگ (دیواری معلق مدرن)</option>
-                <option value="پایه‌دار زمینی با پایه‌های فلزی">پایه‌دار زمینی با پایه‌های فلزی</option>
-                <option value="پایه‌دار کلاسیک PVC">پایه‌دار کلاسیک PVC</option>
+                <option value="وال‌هنگ با شاسی فلزی دوبل">وال‌هنگ با شاسی فلزی دوبل</option>
+                <option value="پایه‌دار زمینی استیل">پایه‌دار زمینی استیل</option>
+                <option value="دیواری همراه با بک‌پنل چوبی">دیواری همراه با بک‌پنل چوبی</option>
               </select>
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-800 mb-1.5 text-xs">
-                نوع آینه:
+              <label className="block font-semibold text-slate-800 mb-1 text-xs">
+                نوع آینه مورد نظر:
               </label>
               <select
                 value={mirrorType}
                 onChange={(e) => setMirrorType(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:bg-white focus:border-amber-500 outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:bg-white focus:border-amber-500 outline-none"
               >
-                <option value="آینه هوشمند بک‌لایت لمسی">آینه هوشمند بک‌لایت تاچ (سنسوردار)</option>
-                <option value="آینه کپسولی بیضی با قاب فلزی">آینه کپسولی بیضی با قاب فلزی</option>
-                <option value="آینه دایره‌ای مون‌لایت">آینه دایره‌ای مون‌لایت</option>
-                <option value="آینه باکس دو درب ضدآب PVC">آینه باکس دو درب ضدآب PVC</option>
-                <option value="بدون آینه (فقط کابین روشویی)">بدون آینه (فقط کابین روشویی)</option>
+                <option value="آینه گرد مینیمال فریم باریک">آینه گرد مینیمال فریم باریک</option>
+                <option value="آینه باکس ست با درب شیاردار">آینه باکس ست با درب شیاردار</option>
+                <option value="آینه باکس سه طبقه شلف‌دار ضدآب">آینه باکس سه طبقه شلف‌دار ضدآب</option>
+                <option value="آینه مستطیل فریم لس">آینه مستطیل فریم لس</option>
+                <option value="بدون آینه (فقط کابینت روشویی)">بدون آینه (فقط کابینت روشویی)</option>
               </select>
             </div>
           </div>
 
-          {/* Color & Basin */}
+          {/* Color Finish & Basin Type */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block font-semibold text-slate-800 mb-1.5 text-xs">
-                رنگ بدنه (رنگ سوپر پلی‌اورتان):
+              <label className="block font-semibold text-slate-800 mb-1 text-xs">
+                پوشش رنگ و متریال:
               </label>
               <select
                 value={colorFinish}
                 onChange={(e) => setColorFinish(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:bg-white focus:border-amber-500 outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:bg-white focus:border-amber-500 outline-none"
               >
-                <option value="طوسی زغالی مات">طوسی زغالی مات</option>
-                <option value="سفید صدفی براق">سفید صدفی براق</option>
-                <option value="مشکی سوپرمات با لبه‌های طلایی">مشکی سوپرمات با خطوط طلایی</option>
-                <option value="طرح چوب گردویی ضدآب">طرح چوب گردویی ضدآب</option>
-                <option value="سبز سدری / زیتونی نئوکلاسیک">سبز سدری / زیتونی نئوکلاسیک</option>
-                <option value="کرم بژ شنی">کرم بژ شنی</option>
+                <option value="طرح چوب بلوط شیاردار طبیعی">طرح چوب بلوط شیاردار طبیعی</option>
+                <option value="مشکی مات سوپر پلی‌اورتان ضدخش">مشکی مات سوپر پلی‌اورتان ضدخش</option>
+                <option value="سفید مات ابریشمی با دستگیره چوبی">سفید مات ابریشمی با دستگیره چوبی</option>
+                <option value="طوسی فیلی مات با زهوار یا شیار">طوسی فیلی مات با زهوار یا شیار</option>
+                <option value="سفید صدفی با زهوار طلایی PVD">سفید صدفی با زهوار طلایی PVD</option>
               </select>
             </div>
 
             <div>
-              <label className="block font-semibold text-slate-800 mb-1.5 text-xs">
-                نوع کاسه و صفحه:
+              <label className="block font-semibold text-slate-800 mb-1 text-xs">
+                نوع کاسه روشویی:
               </label>
               <select
                 value={basinType}
                 onChange={(e) => setBasinType(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-900 focus:bg-white focus:border-amber-500 outline-none"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:bg-white focus:border-amber-500 outline-none"
               >
-                <option value="کاسه سرامیک پرسلان روکار">کاسه سرامیک پرسلان روکار</option>
-                <option value="صفحه اسلب سرامیکی با آبریز مخفی">صفحه اسلب سرامیکی با آبریز مخفی</option>
-                <option value="صفحه سنگ کورین ضدخش">صفحه سنگ کورین ضدخش</option>
-                <option value="سنگ طبیعی مرمر">سنگ طبیعی مرمر</option>
-                <option value="بدون کاسه (تهیه کاسه توسط خودم)">بدون کاسه (تهیه کاسه توسط خودم)</option>
+                <option value="کاسه سرامیک بیضی روکار">کاسه سرامیک بیضی روکار</option>
+                <option value="کاسه سرامیک مشکی مات">کاسه سرامیک مشکی مات</option>
+                <option value="کاسه سرامیک مستطیل روکار کالیبره">کاسه سرامیک مستطیل روکار کالیبره</option>
+                <option value="روشویی سرامیکی یکپارچه لبه‌دار">روشویی سرامیکی یکپارچه لبه‌دار</option>
+                <option value="بدون کاسه (کاسه را جداگانه دارم)">بدون کاسه (کاسه را جداگانه دارم)</option>
               </select>
             </div>
           </div>
@@ -227,26 +240,27 @@ export const CustomVanityOrderModal: React.FC<CustomVanityOrderModalProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
             <div>
               <label className="block font-semibold text-slate-800 mb-1 text-xs">
-                نام و نام خانوادگی (اختیاری):
+                نام و نام خانوادگی متقاضی:
               </label>
               <input
                 type="text"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                placeholder="مثلاً مهندس رضایی"
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs focus:bg-white focus:border-amber-500 outline-none"
+                placeholder="مثلاً مهندس حسینی / خریدار محترم"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:bg-white focus:border-amber-500 outline-none"
               />
             </div>
+
             <div>
               <label className="block font-semibold text-slate-800 mb-1 text-xs">
-                شماره همراه:
+                شماره تماس شما (جهت هماهنگی):
               </label>
               <input
                 type="tel"
                 value={customerPhone}
                 onChange={(e) => setCustomerPhone(e.target.value)}
                 placeholder="۰۹۱۲..."
-                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 text-xs focus:bg-white focus:border-amber-500 outline-none font-mono"
+                className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:bg-white focus:border-amber-500 outline-none font-mono"
               />
             </div>
           </div>
@@ -271,20 +285,33 @@ export const CustomVanityOrderModal: React.FC<CustomVanityOrderModalProps> = ({
               <span>پاسخگویی سریع: {SHOWROOM_INFO.phone1} (تاتار)</span>
             </div>
 
-            <div className="flex items-center gap-2 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto justify-end">
               <button
                 type="button"
-                onClick={onClose}
-                className="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs hover:bg-slate-50 transition-colors"
+                onClick={handleCopy}
+                className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-700 text-xs hover:bg-slate-50 transition-colors"
               >
-                انصراف
+                {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                <span>{copied ? 'متن کپی شد' : 'کپی مشخصات'}</span>
               </button>
+
+              <a
+                href={SHOWROOM_INFO.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleCopy}
+                className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-bold text-xs transition-all"
+              >
+                <Instagram className="w-4 h-4" />
+                <span>دایرکت اینستاگرام</span>
+              </a>
+
               <button
                 type="submit"
-                className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-900/20 transition-all"
+                className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs shadow-md shadow-sky-900/20 transition-all"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>ارسال ابعاد به واتساپ کارگاه</span>
+                <Send className="w-4 h-4" />
+                <span>ارسال ابعاد به تلگرام کارگاه</span>
               </button>
             </div>
           </div>

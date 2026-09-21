@@ -17,7 +17,7 @@ import {
   Search,
   X,
   Bookmark,
-  MessageCircle,
+  Instagram,
   Phone,
   Send,
   Ruler,
@@ -414,24 +414,36 @@ export default function App() {
       />
 
       {/* Floating Action Buttons */}
-      <div className="fixed bottom-5 left-5 z-40 flex flex-col gap-2.5 items-start">
+      <div className="fixed bottom-5 left-5 z-40 flex flex-col gap-2 items-start">
+        {/* Floating Instagram Channel Badge */}
+        <a
+          href={SHOWROOM_INFO.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white px-3.5 py-2 rounded-full shadow-xl flex items-center gap-1.5 font-bold text-xs transition-transform hover:scale-105 border border-pink-300/40"
+          title="پیج رسمی اینستاگرام کابین روز"
+        >
+          <Instagram className="w-3.5 h-3.5" />
+          <span>اینستاگرام: {SHOWROOM_INFO.instagramId}</span>
+        </a>
+
         {/* Floating Telegram Channel Badge */}
         <a
           href={SHOWROOM_INFO.telegram}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-sky-500 hover:bg-sky-400 text-slate-950 px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 font-bold text-xs transition-transform hover:scale-105 border border-sky-300"
+          className="bg-sky-500 hover:bg-sky-400 text-slate-950 px-3.5 py-2 rounded-full shadow-xl flex items-center gap-1.5 font-bold text-xs transition-transform hover:scale-105 border border-sky-300"
           title="کانال رسمی تلگرام کابین روز"
         >
-          <Send className="w-4 h-4" />
-          <span>کانال تلگرام: Ayene_rouz@</span>
+          <Send className="w-3.5 h-3.5" />
+          <span>تلگرام: {SHOWROOM_INFO.telegramId}</span>
         </a>
 
         {/* Floating Saved Items Button */}
         {savedIds.length > 0 && !isInquiryDrawerOpen && (
           <button
             onClick={() => setIsInquiryDrawerOpen(true)}
-            className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-4 py-3 rounded-full shadow-2xl flex items-center gap-2.5 font-bold text-xs sm:text-sm transition-transform hover:scale-105 animate-bounce border border-amber-300"
+            className="bg-amber-500 hover:bg-amber-400 text-slate-950 px-4 py-2.5 rounded-full shadow-2xl flex items-center gap-2 font-bold text-xs sm:text-sm transition-transform hover:scale-105 animate-bounce border border-amber-300"
           >
             <Bookmark className="w-4 h-4" />
             <span>مدل‌های انتخابی ({savedIds.length})</span>

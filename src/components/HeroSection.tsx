@@ -2,11 +2,11 @@ import React from 'react';
 import {
   Sparkles,
   Send,
+  Instagram,
   PhoneCall,
   ArrowDown,
   Ruler,
   CheckCircle2,
-  Layers,
   Award,
 } from 'lucide-react';
 import { SHOWROOM_INFO } from '../data/products';
@@ -38,6 +38,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           <a
+            href={SHOWROOM_INFO.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-500/15 to-purple-500/15 hover:from-pink-500/25 hover:to-purple-500/25 border border-pink-400/40 text-pink-300 px-3 py-1.5 rounded-full text-xs font-medium transition-colors"
+          >
+            <Instagram className="w-3.5 h-3.5 text-pink-400" />
+            <span>پیج اینستاگرام: {SHOWROOM_INFO.instagramId}</span>
+          </a>
+
+          <a
             href={SHOWROOM_INFO.telegram}
             target="_blank"
             rel="noopener noreferrer"
@@ -52,26 +62,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Main Title & Description */}
           <div className="lg:col-span-7 space-y-5">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight sm:leading-tight">
-              ویترین تخصصی <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">کابین روشویی PVC</span> و آینه‌های هوشمند بک‌لایت
+              ویترین تخصصی <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500">کابین روشویی مدرن</span> و آینه‌های لوکس PVC
             </h1>
 
             <p className="text-slate-300 text-xs sm:text-sm lg:text-base leading-relaxed max-w-2xl font-normal">
-              مجموعه تولیدی <strong className="text-white">کابین روز (تاتار)</strong> با بیش از یک دهه تجربه در ساخت انواع کابین روشویی ۱۰۰٪ ضدآب دیواری (وال‌هنگ) و پایه‌دار، آینه‌های هوشمند لمسی ال‌ای‌دی، آینه باکس‌های PVC و صفحات اسلب سرامیک پرسلان.
+              مجموعه تولیدی <strong className="text-white">کابین روز (برادران تاتار)</strong> طراح و سازنده نسل جدید کابین‌های روشویی وال‌هنگ دیواری، مدل‌های شیاردار طرح چوب، فول‌ست‌های مات مشکی و طوسی، و آینه باکس‌های چندمنظوره ۱۰۰٪ ضدآب.
               <span className="block mt-1 text-amber-200/90 font-medium">
-                مشخصات و ابعاد مدل‌ها را بررسی کنید، بدون نیاز به ثبت‌نام به لیست انتخابی بیافزایید یا با ابعاد دلخواه خود مستقیماً از کارگاه استعلام قیمت بگیرید.
+                مدل‌های کارگاه را بررسی کنید، به لیست استعلام اضافه نمایید و جهت اطلاع از قیمت روز و ثبت سفارش مستقیماً با کارگاه در تماس باشید.
               </span>
             </p>
 
             {/* Quick Popular Tags */}
             <div className="pt-1 flex items-center gap-2 flex-wrap text-xs">
-              <span className="text-slate-400 text-[11px]">جستجوهای متداول:</span>
+              <span className="text-slate-400 text-[11px]">دسته‌بندی‌های محبوب:</span>
               {[
-                'وال‌هنگ طوسی مات',
-                'آینه لمسی کپسولی',
-                'روشویی صفحه سرامیک',
-                'سایز ۵۰ کوچک',
-                'آینه باکس دو درب',
-                'آینه بک‌لایت گرد',
+                'طرح چوب شیاردار',
+                'مشکی مات لوکس',
+                'روشویی وال‌هنگ',
+                'آینه گرد مینیمال',
+                'آینه باکس سه طبقه',
+                'طوسی مات مدرن',
               ].map((tag) => (
                 <button
                   key={tag}
@@ -89,7 +99,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 href="#catalog-section"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm transition-all shadow-lg shadow-amber-500/20"
               >
-                <span>مشاهده آلبوم مدل‌ها</span>
+                <span>مشاهده کاتالوگ مدل‌ها</span>
                 <ArrowDown className="w-4 h-4" />
               </a>
 
@@ -98,7 +108,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-amber-500/40 text-amber-300 font-bold text-xs sm:text-sm transition-all shadow-sm"
               >
                 <Ruler className="w-4 h-4 text-amber-400" />
-                <span>سفارش ابعاد اختصاصی کارگاهی</span>
+                <span>سفارش ابعاد دلخواه کارگاهی</span>
               </button>
 
               <a
@@ -106,7 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium text-xs sm:text-sm transition-all"
               >
                 <PhoneCall className="w-4 h-4 text-emerald-400" />
-                <span>تماس: {SHOWROOM_INFO.phone1}</span>
+                <span>تماس مستقیم: {SHOWROOM_INFO.phone1}</span>
               </a>
             </div>
           </div>
@@ -133,9 +143,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
                   <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white block font-semibold">ورق تمام PVC فومیزه ۱۶ میلی‌متر:</strong>
+                    <strong className="text-white block font-semibold">ورق تمام PVC فومیزه ۱۶ میلی‌متر سوپر:</strong>
                     <span className="text-slate-400 text-[11px] leading-relaxed">
-                      دانسیته فشرده و استاندارد بدون خطر بادکردگی، تغییر فرم و موریانه‌زدگی حتی زیر دوش مستقیم.
+                      دانسیته فشرده و استاندارد بدون بادکردگی، طبله یا تغییر فرم حتی در مرطوب‌ترین حمام‌ها.
                     </span>
                   </div>
                 </div>
@@ -143,9 +153,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
                   <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white block font-semibold">رنگ‌های سوپر پلی‌اورتان ضدخش:</strong>
+                    <strong className="text-white block font-semibold">رنگ‌های سوپر پلی‌اورتان ضدخش و ضداسید:</strong>
                     <span className="text-slate-400 text-[11px] leading-relaxed">
-                      پوشش ۳ لایه آستر و رویه خودرویی با ثبات رنگ بالا در برابر مواد شوینده و جرم‌گیر.
+                      پوشش مقاوم چندلایه با ثبات رنگ پایدار در برابر شوینده‌ها، آب گرم و بخار مداوم.
                     </span>
                   </div>
                 </div>
@@ -153,28 +163,33 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
                   <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                   <div>
-                    <strong className="text-white block font-semibold">آینه‌های سوپرکلیر اردکان با سنسور تاچ:</strong>
+                    <strong className="text-white block font-semibold">یراق‌آلات استیل ۳۰۴ پمپی آرام‌بند:</strong>
                     <span className="text-slate-400 text-[11px] leading-relaxed">
-                      جیوه نقره درجه یک بدون سیاهی لبه، کیت ال‌ای‌دی ۱۲ ولت ایزوله و کلید لمسی حساس.
+                      ریل‌های ساچمه‌ای روان و لولاهای پمپی بدون صدا با مقاومت دائم در برابر اکسیداسیون و زنگ‌زدگی.
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Telegram Channel Callout in Card */}
-              <div className="pt-2 border-t border-slate-800 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Send className="w-4 h-4 text-sky-400" />
-                  <span className="text-xs text-slate-300">کانال تلگرام:</span>
-                  <span className="text-xs font-mono font-bold text-sky-300">Ayene_rouz@</span>
-                </div>
+              {/* Social Channels Callout in Card */}
+              <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+                <a
+                  href={SHOWROOM_INFO.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-pink-400 hover:text-pink-300 font-medium"
+                >
+                  <Instagram className="w-4 h-4" />
+                  <span>اینستاگرام: {SHOWROOM_INFO.instagramId}</span>
+                </a>
                 <a
                   href={SHOWROOM_INFO.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-bold text-sky-400 hover:text-sky-300 underline underline-offset-4"
+                  className="flex items-center gap-1.5 text-sky-400 hover:text-sky-300 font-medium"
                 >
-                  مشاهده کانال
+                  <Send className="w-4 h-4" />
+                  <span>تلگرام: {SHOWROOM_INFO.telegramId}</span>
                 </a>
               </div>
             </div>

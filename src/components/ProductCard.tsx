@@ -4,11 +4,9 @@ import {
   Bookmark,
   Check,
   Eye,
-  MessageCircle,
+  Phone,
   ShieldCheck,
   Send,
-  Sparkles,
-  Ruler,
 } from 'lucide-react';
 import { SHOWROOM_INFO } from '../data/products';
 
@@ -25,10 +23,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   isSaved,
   onToggleSave,
 }) => {
-  const whatsappUrl = `https://wa.me/98${SHOWROOM_INFO.whatsapp.substring(1)}?text=${encodeURIComponent(
-    `سلام آقای تاتار، مایل به استعلام قیمت روز و ثبت سفارش از وب‌سایت کابین روز هستم:\nنام مدل: ${product.name}\nکد کالا: ${product.code}\nسایز/یونیت: ${product.specs.unitSize || '-'}\nمتریال: ${product.specs.material}`
-  )}`;
-
   return (
     <div className="group bg-white rounded-2xl border border-slate-200/90 hover:border-amber-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden text-right">
       {/* Product Image and Badges */}
@@ -81,7 +75,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className="absolute inset-0 bg-slate-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
           <span className="bg-white/95 text-slate-900 text-xs font-bold px-3.5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
             <Eye className="w-3.5 h-3.5 text-amber-600" />
-            مشاهده آلبوم و مشخصات فنی
+            مشاهده جزئیات و مشخصات فنی
           </span>
         </div>
       </div>
@@ -161,13 +155,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </button>
 
             <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`tel:${SHOWROOM_INFO.phone1}`}
               className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-bold transition-colors"
-              title="استعلام در واتساپ"
+              title="تماس جهت استعلام قیمت"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <Phone className="w-3.5 h-3.5 text-emerald-600" />
               <span>استعلام قیمت</span>
             </a>
           </div>

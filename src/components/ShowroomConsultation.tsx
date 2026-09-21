@@ -3,14 +3,13 @@ import {
   MapPin,
   Clock,
   Phone,
-  MessageCircle,
+  Instagram,
   HelpCircle,
   ChevronDown,
   CheckCircle2,
   Send,
   Sparkles,
-  ShieldCheck,
-  Ruler,
+  ExternalLink,
 } from 'lucide-react';
 import { SHOWROOM_INFO } from '../data/products';
 
@@ -30,12 +29,12 @@ export const ShowroomConsultation: React.FC = () => {
       a: 'فضای حمام و دستشویی همواره در معرض بخار مداوم و پاشش مستقیم آب است. حتی مرغوب‌ترین MDFهای ضدآب پس از مدتی متورم شده و تغییر شکل می‌دهند؛ اما ورق PVC فومیزه ۱۶ میل استفاده شده در کابین روز، ۱۰۰٪ ضدآب بوده و هرگز نمی‌پوسد، قارچ نمی‌زند و ضد موریانه است.',
     },
     {
-      q: 'آیا امکان سفارش کابین روشویی یا آینه با ابعاد دقیق سرویس بهداشتی من وجود دارد؟',
-      a: 'بله، تفاوت اصلی مجموعه کابین روز (تاتار) این است که ما تولیدکننده مستقیم هستیم. کافی است طول و عمق فضای خود را از طریق واتساپ یا دکمه «سفارش ابعاد اختصاصی» ارسال کنید تا مدل دلخواه شما دقیقاً به میلیمتر ساخته شود.',
+      q: 'آیا امکان سفارش کابین روشویی با ابعاد دقیق سرویس بهداشتی من وجود دارد؟',
+      a: 'بله، تفاوت اصلی مجموعه کابین روز (برادران تاتار) این است که ما کارگاه تولیدی مستقیم هستیم. کافی است طول و عمق فضای خود را از طریق تماس، اینستاگرام، تلگرام یا بخش «سفارش ابعاد اختصاصی» ارسال کنید تا مدل دلخواه شما طبق میلیمتر ساخته شود.',
     },
     {
-      q: 'آینه‌های هوشمند لمسی چگونه کار می‌کنند و آیا در محیط مرطوب ایمن هستند؟',
-      a: 'تمام آینه‌های هوشمند تولیدی ما از ترانس‌های ایزوله ۱۲ ولت ضدآب استاندارد استفاده می‌کنند و هیچ خطری برای کاربر ندارند. سنسور تاچ حتی با دست خیس کار می‌کند و پد گرمکن ضدبخار باعث می‌شود پس از دوش داغ، آینه کاملاً شفاف بماند.',
+      q: 'رنگ‌آمیزی کابین‌ها چگونه است و آیا در برابر مواد شوینده تغییر رنگ می‌دهد؟',
+      a: 'تمامی محصولات با ۳ دست پوشش رنگ سوپر پلی‌اورتان درجه یک خودرویی رنگ‌آمیزی می‌شوند که مقاومت کاملی در برابر بخار آب گرم، شوینده‌های بهداشتی و زردشدگی در طول سال‌ها دارند.',
     },
     {
       q: 'نحوه ارسال سفارشات به تهران و شهرستان‌ها چگونه انجام می‌شود؟',
@@ -47,9 +46,9 @@ export const ShowroomConsultation: React.FC = () => {
     e.preventDefault();
     if (!form.phone.trim()) return;
     const msg = `درود بر برادران تاتار (کابین روز)،\nدرخواست مشاوره ثبت شد:\nنام: ${form.name || '-'}\nشماره: ${form.phone}\nموضوع: ${form.topic}\nپیام: ${form.message || '-'}`;
-    const url = `https://wa.me/98${SHOWROOM_INFO.whatsapp.substring(1)}?text=${encodeURIComponent(msg)}`;
-    window.open(url, '_blank');
+    navigator.clipboard.writeText(msg);
     setConsultationSubmitted(true);
+    window.open(SHOWROOM_INFO.telegram, '_blank');
   };
 
   return (
@@ -64,7 +63,7 @@ export const ShowroomConsultation: React.FC = () => {
             کارگاه تولیدی و دفتر پخش کابین روز
           </h2>
           <p className="text-xs sm:text-sm text-slate-600">
-            مدیریت: برادران تاتار | تولید کننده انواع آینه هوشمند و کابین روشویی PVC
+            مدیریت: برادران تاتار | تولید کننده انواع کابین روشویی PVC و آینه‌های مدرن
           </p>
         </div>
 
@@ -74,10 +73,10 @@ export const ShowroomConsultation: React.FC = () => {
             <div className="space-y-2">
               <h3 className="font-extrabold text-lg text-slate-900 flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-amber-500" />
-                <span>اطلاعات تماس، کارگاه و کانال تلگرام</span>
+                <span>اطلاعات تماس، کارگاه و شبکه‌های اجتماعی</span>
               </h3>
               <p className="text-xs text-slate-500">
-                جهت سفارش تکی، عمده برای پروژه‌های ساختمانی یا بازدید از نمونه‌های کارگاه:
+                جهت سفارش تکی، عمده برای پروژه‌های ساختمانی یا استعلام قیمت کارگاه:
               </p>
             </div>
 
@@ -98,20 +97,42 @@ export const ShowroomConsultation: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-3.5 rounded-2xl bg-sky-50 border border-sky-100">
-                <Send className="w-5 h-5 text-sky-600 shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-sky-950 block font-bold mb-0.5">کانال رسمی تلگرام:</strong>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="p-3.5 rounded-2xl bg-gradient-to-br from-pink-50 to-purple-50 border border-pink-200">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Instagram className="w-5 h-5 text-pink-600" />
+                    <strong className="text-pink-950 font-bold text-xs">پیج اینستاگرام:</strong>
+                  </div>
+                  <a
+                    href={SHOWROOM_INFO.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-pink-700 hover:text-pink-900 text-xs font-mono font-bold flex items-center gap-1"
+                  >
+                    <span>{SHOWROOM_INFO.instagramId}</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span className="block text-[11px] text-slate-500 mt-1">
+                    مشاهده عکس‌ها و ویدیوهای تحویلی به مشتریان
+                  </span>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-sky-50 border border-sky-200">
+                  <div className="flex items-center gap-2 mb-1">
+                    <Send className="w-5 h-5 text-sky-600" />
+                    <strong className="text-sky-950 font-bold text-xs">کانال تلگرام:</strong>
+                  </div>
                   <a
                     href={SHOWROOM_INFO.telegram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sky-700 hover:text-sky-900 text-xs font-mono font-bold underline"
+                    className="text-sky-700 hover:text-sky-900 text-xs font-mono font-bold flex items-center gap-1"
                   >
-                    {SHOWROOM_INFO.telegram} ({SHOWROOM_INFO.telegramId})
+                    <span>{SHOWROOM_INFO.telegramId}</span>
+                    <ExternalLink className="w-3 h-3" />
                   </a>
-                  <span className="block text-[11px] text-slate-500 mt-0.5">
-                    مشاهده روزانه ویدیوهای خط تولید و مدل‌های ارسالی مشتریان
+                  <span className="block text-[11px] text-slate-500 mt-1">
+                    استعلام قیمت و لیست تولیدات جدید
                   </span>
                 </div>
               </div>
@@ -151,7 +172,7 @@ export const ShowroomConsultation: React.FC = () => {
               {consultationSubmitted ? (
                 <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-                  <span>درخواست شما در واتساپ باز شد. در کوتاه‌ترین زمان پاسخگوی شما هستیم.</span>
+                  <span>پیام شما کپی شد و تلگرام کارگاه باز شد. با کمال میل پاسخگوی شما هستیم.</span>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3">
@@ -180,7 +201,7 @@ export const ShowroomConsultation: React.FC = () => {
                   >
                     <option value="مشاوره ابعاد روشویی و استعلام قیمت">مشاوره ابعاد روشویی و استعلام قیمت</option>
                     <option value="سفارش ساخت ابعاد سفارشی">سفارش ساخت ابعاد سفارشی</option>
-                    <option value="خرید آینه هوشمند لمسی بک‌لایت">خرید آینه هوشمند لمسی بک‌لایت</option>
+                    <option value="خرید آینه باکس و شلف PVC">خرید آینه باکس و شلف PVC</option>
                     <option value="سفارش عمده پروژه‌ای و انبوه‌سازی">سفارش عمده پروژه‌ای و انبوه‌سازی</option>
                   </select>
 
@@ -188,8 +209,8 @@ export const ShowroomConsultation: React.FC = () => {
                     type="submit"
                     className="w-full py-2.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 transition-colors shadow-sm"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>ارسال پیام مشاوره به واتساپ کارگاه</span>
+                    <Send className="w-4 h-4" />
+                    <span>ارسال مشخصات به تلگرام کارگاه جهت مشاوره</span>
                   </button>
                 </form>
               )}
