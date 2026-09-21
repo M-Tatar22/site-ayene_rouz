@@ -13,7 +13,7 @@ export const SHOWROOM_INFO = {
   telegramId: '@Ayene_rouz',
   developerName: 'M_Tatar22',
   developerUrl: 'https://matintatar.ir',
-  address: 'تهران، بزرگراه آیت‌الله سعیدی، شهرک صنعتی چهاردانگه، خیابان ۲۴، پلاک ۱۸، مجموعه تولیدی کابین روز (تاتار)',
+  address: 'تهران _ منطقه صنعتی کمرد _ نوین پلاک 61',
   workingHours: 'شنبه تا پنج‌شنبه: ۸:۳۰ الی ۱۹:۳۰ | جمعه‌ها و ایام تعطیل با هماهنگی تلفنی',
   consultationText: 'مشاوره رایگان انتخاب ابعاد، سفارشی‌سازی و استعلام قیمت همکار و پروژه‌ای',
 };
@@ -24,7 +24,7 @@ export const CATEGORIES: Category[] = [
     title: 'روشویی مدرن طرح چوب و شیاردار',
     subtitle: 'ترکیب چوب طبیعی ضدآب، شیارهای مدرن CNC و کاسه‌های روکار',
     iconName: 'Sparkles',
-    image: '/src/assets/images/vanity_wood_fluted_1789989741228.jpg',
+    image: '/images/vanity_wood_fluted_1789989741228.jpg',
     itemCount: 3,
   },
   {
@@ -32,7 +32,7 @@ export const CATEGORIES: Category[] = [
     title: 'کابین روشویی دیواری و وال‌هنگ PVC',
     subtitle: 'مدل‌های معلق سفید، طوسی و دورنگ با ورق ۱۶ میل ضدآب',
     iconName: 'LayoutGrid',
-    image: '/src/assets/images/vanity_slate_grey_1789989801642.jpg',
+    image: '/images/vanity_slate_grey_1789989801642.jpg',
     itemCount: 4,
   },
   {
@@ -40,7 +40,7 @@ export const CATEGORIES: Category[] = [
     title: 'فول‌ست‌های لوکس و مشکی مات',
     subtitle: 'کابینت‌های سوپرمات مشکی با کاسه سرامیکی مات و آینه باکس ست',
     iconName: 'Crown',
-    image: '/src/assets/images/vanity_black_matte_1789989756580.jpg',
+    image: '/images/vanity_black_matte_1789989756580.jpg',
     itemCount: 1,
   },
   {
@@ -48,7 +48,7 @@ export const CATEGORIES: Category[] = [
     title: 'آینه باکس و شلف‌های تخصصی ضدآب',
     subtitle: 'کمد آینه‌دار جادار، شلف دکوراتیو سه طبقه و جا حوله‌ای استیل',
     iconName: 'Archive',
-    image: '/src/assets/images/mirror_box_shelves_1789989815559.jpg',
+    image: '/images/mirror_box_shelves_1789989815559.jpg',
     itemCount: 1,
   },
 ];
@@ -71,7 +71,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'medium',
     basinType: 'ceramic',
     images: [
-      '/src/assets/images/vanity_wood_fluted_1789989741228.jpg',
+      '/images/vanity_wood_fluted_1789989741228.jpg',
     ],
     specs: {
       unitSize: 'عرض ۷۰ و ۸۰ سانتی‌متر (قابل ساخت سفارشی)',
@@ -111,7 +111,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'medium',
     basinType: 'ceramic',
     images: [
-      '/src/assets/images/vanity_black_matte_1789989756580.jpg',
+      '/images/vanity_black_matte_1789989756580.jpg',
     ],
     specs: {
       unitSize: 'عرض ۶۰ و ۷۰ سانتی‌متر',
@@ -151,7 +151,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'medium',
     basinType: 'ceramic',
     images: [
-      '/src/assets/images/vanity_curved_fluted_1789989855571.jpg',
+      '/images/vanity_curved_fluted_1789989855571.jpg',
     ],
     specs: {
       unitSize: 'عرض ۷۰ سانتی‌متر',
@@ -190,7 +190,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'medium',
     basinType: 'ceramic',
     images: [
-      '/src/assets/images/vanity_wood_accent_1789989772280.jpg',
+      '/images/vanity_wood_accent_1789989772280.jpg',
     ],
     specs: {
       unitSize: 'عرض ۶۵ و ۷۵ سانتی‌متر',
@@ -229,7 +229,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'medium',
     basinType: 'ceramic',
     images: [
-      '/src/assets/images/vanity_white_slat_1789989836136.jpg',
+      '/images/vanity_white_slat_1789989836136.jpg',
     ],
     specs: {
       unitSize: 'عرض ۶۰ و ۷۰ سانتی‌متر',
@@ -268,7 +268,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'medium',
     basinType: 'ceramic',
     images: [
-      '/src/assets/images/vanity_slate_grey_1789989801642.jpg',
+      '/images/vanity_slate_grey_1789989801642.jpg',
     ],
     specs: {
       unitSize: 'عرض ۷۰ سانتی‌متر',
@@ -307,7 +307,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'large',
     basinType: 'ceramic',
     images: [
-      '/src/assets/images/vanity_wood_panel_1789989870769.jpg',
+      '/images/vanity_wood_panel_1789989870769.jpg',
     ],
     specs: {
       unitSize: 'عرض ۷۵ سانتی‌متر و ارتفاع پنل ۱۵۰ سانتی‌متر',
@@ -346,7 +346,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'medium',
     basinType: 'integrated',
     images: [
-      '/src/assets/images/vanity_white_gold_1789989788401.jpg',
+      '/images/vanity_white_gold_1789989788401.jpg',
     ],
     specs: {
       unitSize: 'عرض ۶۰ و ۷۰ سانتی‌متر',
@@ -385,7 +385,7 @@ export const PRODUCTS: Product[] = [
     sizeCategory: 'small',
     basinType: 'none',
     images: [
-      '/src/assets/images/mirror_box_shelves_1789989815559.jpg',
+      '/images/mirror_box_shelves_1789989815559.jpg',
     ],
     specs: {
       unitSize: 'عرض ۷۰ × ارتفاع ۶۵ × عمق ۱۴ سانتی‌متر',

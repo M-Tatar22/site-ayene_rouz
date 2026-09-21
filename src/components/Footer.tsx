@@ -155,23 +155,23 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Copyright & Developer Credit Bar */}
-        <div className="mt-12 pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="mt-12 pt-6 pb-12 sm:pb-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} تولیدی آینه و کابین روشویی PVC تاتار (کابین روز). کلیه حقوق محفوظ است.
           </p>
 
           {/* Developer Credit Link requested by user */}
-          <div className="flex items-center gap-2">
-            <span className="text-slate-400">طراحی و توسعه توسط:</span>
+          <div className="flex items-center gap-2 sm:pl-2">
+            <span className="text-slate-400 font-normal">طراحی و توسعه توسط:</span>
             <a
               href="https://matintatar.ir"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-900 hover:bg-slate-800 text-amber-400 hover:text-amber-300 font-medium border border-slate-800 hover:border-amber-500/40 transition-all shadow-sm"
-              title="مشاهده وب‌سایت توسعه‌دهنده"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-amber-400 hover:text-amber-300 font-bold border border-amber-500/30 hover:border-amber-400 transition-all shadow-md hover:scale-105"
+              title="مشاهده وب‌سایت توسعه‌دهنده matintatar.ir"
             >
               <span>M_Tatar22</span>
-              <ExternalLink className="w-3 h-3 opacity-70" />
+              <ExternalLink className="w-3.5 h-3.5 opacity-80" />
             </a>
           </div>
         </div>
