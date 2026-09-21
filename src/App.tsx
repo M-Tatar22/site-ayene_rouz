@@ -414,7 +414,7 @@ export default function App() {
       />
 
       {/* Floating Action Buttons */}
-      <div className="fixed bottom-20 sm:bottom-24 left-4 sm:left-6 z-40 flex flex-col gap-2 items-start pointer-events-auto">
+      <div className="hidden md:flex fixed bottom-20 sm:bottom-24 left-4 sm:left-6 z-40 flex flex-col gap-2 items-start pointer-events-auto">
         {/* Floating Instagram Channel Badge */}
         <a
           href={SHOWROOM_INFO.instagram}
