@@ -335,7 +335,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>سفارش ابعاد اختصاصی</span>
           </button>
 
-          {/* دکمه گالری پشت صحنه در نوار منوی بالای صفحه */}
           <button
             onClick={() => {
               const el = document.getElementById('behind-the-scenes');
@@ -348,68 +347,83 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation Menu */}
+      {/* Mobile Drawer Navigation Menu (Full height & Close button added) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[110px] z-50 bg-white border-t border-slate-200 p-5 overflow-y-auto space-y-5 animate-in fade-in">
-          <div className="space-y-3">
-            <h3 className="font-extrabold text-sm text-slate-900">دسته‌بندی‌های کابین روز:</h3>
-            <div className="grid grid-cols-1 gap-2 text-xs">
+        <div className="lg:hidden fixed inset-0 z-50 bg-white p-5 overflow-y-auto flex flex-col justify-between h-full min-h-screen">
+          <div>
+            {/* Header with Close (X) button */}
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+              <span className="font-bold text-slate-900 text-sm">منوی دسترسی سریع</span>
               <button
-                onClick={() => {
-                  onSelectCategory('all');
-                  setMobileMenuOpen(false);
-                }}
-                className="p-2.5 rounded-xl bg-slate-50 text-right font-medium text-slate-800"
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-1 text-xs font-bold cursor-pointer"
+                aria-label="بستن منو"
               >
-                همه مدل‌ها ({products.length})
+                <span>بستن</span>
+                <X className="w-5 h-5 text-slate-700" />
               </button>
-              <button
-                onClick={() => {
-                  onSelectCategory('vanity-modern-wood');
-                  setMobileMenuOpen(false);
-                }}
-                className="p-2.5 rounded-xl bg-slate-50 text-right font-medium text-slate-800"
-              >
-                طرح چوب و شیاردار مدرن
-              </button>
-              <button
-                onClick={() => {
-                  onSelectCategory('vanity-wallhang');
-                  setMobileMenuOpen(false);
-                }}
-                className="p-2.5 rounded-xl bg-slate-50 text-right font-medium text-slate-800"
-              >
-                کابین روشویی وال‌هنگ دیواری
-              </button>
-              <button
-                onClick={() => {
-                  onSelectCategory('vanity-matte-black');
-                  setMobileMenuOpen(false);
-                }}
-                className="p-2.5 rounded-xl bg-slate-50 text-right font-medium text-slate-800"
-              >
-                فول‌ست مشکی مات لوکس
-              </button>
-              <button
-                onClick={() => {
-                  onSelectCategory('mirror-cabinets');
-                  setMobileMenuOpen(false);
-                }}
-                className="p-2.5 rounded-xl bg-slate-50 text-right font-medium text-slate-800"
-              >
-                آینه باکس و شلف ضدآب PVC
-              </button>
+            </div>
+
+            <div className="space-y-3">
+              <h3 className="font-extrabold text-xs text-slate-400 uppercase tracking-wider">دسته‌بندی‌های کابین روز:</h3>
+              <div className="grid grid-cols-1 gap-2 text-xs">
+                <button
+                  onClick={() => {
+                    onSelectCategory('all');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="p-3 rounded-xl bg-slate-50 hover:bg-amber-50 text-right font-medium text-slate-800"
+                >
+                  همه مدل‌ها ({products.length})
+                </button>
+                <button
+                  onClick={() => {
+                    onSelectCategory('vanity-modern-wood');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="p-3 rounded-xl bg-slate-50 hover:bg-amber-50 text-right font-medium text-slate-800"
+                >
+                  طرح چوب و شیاردار مدرن
+                </button>
+                <button
+                  onClick={() => {
+                    onSelectCategory('vanity-wallhang');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="p-3 rounded-xl bg-slate-50 hover:bg-amber-50 text-right font-medium text-slate-800"
+                >
+                  کابین روشویی وال‌هنگ دیواری
+                </button>
+                <button
+                  onClick={() => {
+                    onSelectCategory('vanity-matte-black');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="p-3 rounded-xl bg-slate-50 hover:bg-amber-50 text-right font-medium text-slate-800"
+                >
+                  فول‌ست مشکی مات لوکس
+                </button>
+                <button
+                  onClick={() => {
+                    onSelectCategory('mirror-cabinets');
+                    setMobileMenuOpen(false);
+                  }}
+                  className="p-3 rounded-xl bg-slate-50 hover:bg-amber-50 text-right font-medium text-slate-800"
+                >
+                  آینه باکس و شلف ضدآب PVC
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="pt-3 border-t border-slate-100 space-y-2">
+          <div className="pt-4 border-t border-slate-100 space-y-2.5 pb-8 mt-6">
             <button
               onClick={() => {
                 const el = document.getElementById('behind-the-scenes');
                 if (el) el.scrollIntoView({ behavior: 'smooth' });
                 setMobileMenuOpen(false);
               }}
-              className="w-full py-3 px-4 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-4 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2 shadow-sm"
             >
               <span>🎬 مشاهده گالری پشت صحنه</span>
             </button>
@@ -419,7 +433,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onOpenCustomOrder();
                 setMobileMenuOpen(false);
               }}
-              className="w-full py-3 px-4 rounded-xl bg-amber-100 text-amber-900 font-bold text-xs flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-4 rounded-xl bg-amber-100 text-amber-900 font-bold text-xs flex items-center justify-center gap-2"
             >
               <Ruler className="w-4 h-4" />
               <span>سفارش ابعاد اختصاصی کابین روشویی</span>
@@ -429,7 +443,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               href={SHOWROOM_INFO.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold text-xs flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold text-xs flex items-center justify-center gap-2"
             >
               <Instagram className="w-4 h-4" />
               <span>پیج اینستاگرام کابین روز ({SHOWROOM_INFO.instagramId})</span>
@@ -439,7 +453,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               href={SHOWROOM_INFO.telegram}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3 px-4 rounded-xl bg-sky-600 text-white font-bold text-xs flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-4 rounded-xl bg-sky-600 text-white font-bold text-xs flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               <span>کانال تلگرام کابین روز ({SHOWROOM_INFO.telegramId})</span>
@@ -447,7 +461,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <a
               href={`tel:${SHOWROOM_INFO.phone1}`}
-              className="w-full py-3 px-4 rounded-xl bg-slate-900 text-white font-bold text-xs flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-4 rounded-xl bg-slate-900 text-white font-bold text-xs flex items-center justify-center gap-2"
             >
               <Phone className="w-4 h-4 text-emerald-400" />
               <span>تماس مستقیم کارگاه: {SHOWROOM_INFO.phone1}</span>
