@@ -26,6 +26,15 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({
         <p className="text-xs sm:text-sm text-slate-500">
           برای مشاهده مدل‌ها، روی هر دسته کلیک فرمایید
         </p>
+        <button
+  onClick={() => {
+    const el = document.getElementById('behind-the-scenes');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  }}
+  className="px-4 py-2 rounded-full text-xs font-bold transition-all bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 shadow-sm"
+>
+  🎬 گالری پشت صحنه
+</button>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
