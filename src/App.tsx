@@ -11,6 +11,7 @@ import { TelegramShowcase } from './components/TelegramShowcase';
 import { CustomVanityOrderModal } from './components/CustomVanityOrderModal';
 import { ShowroomConsultation } from './components/ShowroomConsultation';
 import { Footer } from './components/Footer';
+import { BehindTheScenes } from './components/BehindTheScenes';
 import {
   Layers,
   Sparkles,
@@ -379,6 +380,7 @@ export default function App() {
 
         {/* Showroom & Consultation & FAQ Section */}
         <ShowroomConsultation />
+        <BehindTheScenes />
       </main>
 
       {/* Footer */}
