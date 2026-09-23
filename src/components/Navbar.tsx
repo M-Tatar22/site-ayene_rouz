@@ -196,9 +196,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
-          {/* Action Buttons: Custom Order, Instagram, Saved List, Telegram */}
+          {/* Action Buttons */}
           <div className="flex items-center gap-2 sm:gap-2.5">
-            {/* Custom Sizing Order Button */}
             <button
               onClick={onOpenCustomOrder}
               className="hidden lg:flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-amber-50 hover:bg-amber-100/80 text-amber-900 border border-amber-300 text-xs font-bold transition-all shadow-2xs"
@@ -207,7 +206,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>سفارش ابعاد اختصاصی</span>
             </button>
 
-            {/* Instagram Link */}
             <a
               href={SHOWROOM_INFO.instagram}
               target="_blank"
@@ -219,7 +217,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>اینستاگرام</span>
             </a>
 
-            {/* Telegram Channel Quick Link */}
             <a
               href={SHOWROOM_INFO.telegram}
               target="_blank"
@@ -231,7 +228,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>تلگرام</span>
             </a>
 
-            {/* Saved Inquiry List */}
             <button
               id="saved-inquiry-drawer-btn"
               onClick={onOpenSavedDrawer}
@@ -249,7 +245,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* Showroom Anchor */}
             <a
               id="header-showroom-consult-btn"
               href="#showroom-section"
@@ -339,6 +334,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Ruler className="w-3.5 h-3.5 text-amber-700" />
             <span>سفارش ابعاد اختصاصی</span>
           </button>
+
+          {/* دکمه گالری پشت صحنه در نوار منوی بالای صفحه */}
+          <button
+            onClick={() => {
+              const el = document.getElementById('behind-the-scenes');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-bold transition-colors flex items-center gap-1 cursor-pointer shadow-2xs"
+          >
+            <span>🎬 گالری پشت صحنه</span>
+          </button>
         </div>
       </div>
 
@@ -399,10 +405,21 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="pt-3 border-t border-slate-100 space-y-2">
             <button
               onClick={() => {
-                onOpenCustomOrder();
+                const el = document.getElementById('behind-the-scenes');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
                 setMobileMenuOpen(false);
               }}
               className="w-full py-3 px-4 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs flex items-center justify-center gap-2"
+            >
+              <span>🎬 مشاهده گالری پشت صحنه</span>
+            </button>
+
+            <button
+              onClick={() => {
+                onOpenCustomOrder();
+                setMobileMenuOpen(false);
+              }}
+              className="w-full py-3 px-4 rounded-xl bg-amber-100 text-amber-900 font-bold text-xs flex items-center justify-center gap-2"
             >
               <Ruler className="w-4 h-4" />
               <span>سفارش ابعاد اختصاصی کابین روشویی</span>
